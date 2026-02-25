@@ -9,9 +9,9 @@
   border-radius: 16px;
   padding: 20px;
   box-sizing: border-box;
-  background: #fff6e8;
   overflow: auto;
   max-height: 81vh;
+  box-shadow: inset 0 0 20px 0px #00000096;
 }
 
 .authors h2 {
@@ -61,11 +61,30 @@
 
 .author-book-list {
   margin: 0 0 20px;
-  padding-left: 20px;
+  padding-left: 0;
+  list-style: none;
 }
 
-.author-book-list li {
-  margin-bottom: 8px;
+.author-book-item {
+  margin-bottom: 10px;
+}
+
+.author-book-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.author-book-box {
+  border: 1px solid #d9c8a8;
+  border-radius: 10px;
+  padding: 10px 12px;
+  background: #fffdf8;
+  box-shadow: inset 0 0 8px #0000001a;
+}
+
+.author-book-link:hover .author-book-box {
+  background: #fff4df;
+  border-color: #b68446;
 }
 
 .author-back-link {

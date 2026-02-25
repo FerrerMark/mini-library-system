@@ -83,9 +83,13 @@ const AuthorProfile = () => {
             <h3>Books</h3>
             <ul className="author-book-list">
               {authoredBooks.map((book) => (
-                <li key={book._id}>
-                  <strong>{book.title}</strong>
-                  {book.genre ? <span> - {book.genre}</span> : null}
+                <li key={book._id} className="author-book-item">
+                  <Link className="author-book-link" to={`/books/${book._id}`}>
+                    <div className="author-book-box">
+                      <strong>{book.title}</strong>
+                      {book.genre ? <span> - {book.genre}</span> : null}
+                    </div>
+                  </Link>
                 </li>
               ))}
             </ul>

@@ -1,30 +1,30 @@
 .header svg {
-    width: 56px;
-    height: 32px;
+  width: 56px;
+  height: 32px;
 }
 
 .header {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    background-color: #595959;
-    padding: 10px;
-    text-align: center;
-    border-radius: 61px;
-    height: 40px;
-    margin: auto;
-    position: sticky;
-    top: 20px;
-    background: #fff9ed6b;
-    box-shadow: inset 0 0 20px 2px #00000063;
-    backdrop-filter: blur(5px);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #595959;
+  padding: 10px;
+  text-align: center;
+  border-radius: 61px;
+  height: 40px;
+  margin: auto;
+  position: sticky;
+  top: 20px;
+  background: #fff9ed6b;
+  box-shadow: inset 0 0 20px 2px #00000063;
+  backdrop-filter: blur(5px);
 }
 
-.header h1{
-    font-size: 15px;
-    color: #000000;
-    margin: unset;
-    text-shadow: 1px -1px 4px #694b4b;
+.header h1 {
+  font-size: 15px;
+  color: #000000;
+  margin: unset;
+  text-shadow: 1px -1px 4px #694b4b;
 }
 
 .header ul {
@@ -33,13 +33,13 @@
   margin: 0;
   padding: 0;
   gap: 16px;
-font-size: 18px;
+  font-size: 18px;
+  align-items: center;
 }
 
 .header li {
   display: inline-block;
   margin-right: 10px;
-
 }
 
 .header li a {
@@ -50,63 +50,61 @@ font-size: 18px;
 }
 
 .menu-toggle {
-    display: none;
+  display: none;
 }
 
 .header li a:hover {
-    color: #000000ab;
+  color: #000000ab;
 }
 
 .header .logo {
-    height: 23px;
-    width: 57px;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
+  height: 23px;
+  width: 57px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
-
 .search-icon-link {
-    font-size: 18px !important;
-    line-height: 1;
-    display: inline-block;
+  font-size: 18px !important;
+  line-height: 1;
+  display: inline-block;
 }
 
 .search-icon-link:hover {
-    transform: scale(1.05);
+  transform: scale(1.05);
 }
 @media (max-width: 390px) {
-    .header ul {
-        display: none;
-        flex-direction: column;
-        position: absolute;
-        top: 60px;
-        background: white;
-        width: 100%;
-    }
+  .header ul {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 60px;
+    background: white;
+    width: 100%;
+  }
 
-    ul.show {
-        display: flex;
-        width: 96px;
-        position: absolute;
-        right: 39px;
-        box-shadow: inset 0 0 12px black;
-        top: 45px;
-        border-radius: 12px;
-        padding: 16px;
-    }
+  ul.show {
+    display: flex;
+    width: 96px;
+    position: absolute;
+    right: 39px;
+    box-shadow: inset 0 0 12px black;
+    top: 45px;
+    border-radius: 12px;
+    padding: 16px;
+  }
 
-    .menu-toggle {
-        display: block;
-        cursor: pointer;
-    }
+  .menu-toggle {
+    display: block;
+    cursor: pointer;
+  }
 
-    .notification {
-        backdrop-filter: blur(3px);
-        margin: 0 -71px !important;
-        background: #ffffff70;
-    }
-
+  .notification {
+    backdrop-filter: blur(3px);
+    margin: 0 -71px !important;
+    background: #ffffff70;
+  }
 }
 
 .iconamoon--search-bold {
