@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import SearchBar from './SearchBar';
 import GenreFilter from './GenreFilter';
 import '../css/Booklist.css';
@@ -10,6 +11,7 @@ function BookList() {
   const [searchTerm, setSearchTerm] = useState('');
   const [genre, setGenre] = useState('');
   const [loading, setLoading] = useState(true); // loading state
+  const navigate = useNavigate();
   const API_URL = process.env.REACT_APP_API_URL;
   const token = localStorage.getItem('token');
 
@@ -83,10 +85,19 @@ function BookList() {
             <div
               key={book._id}
               className="book-item"
+              onClick={() => navigate(`/books/${book._id}`)}
+              role="button"
+              tabIndex={0}
+              onKeyDown={(event) => {
+                if (event.key === 'Enter' || event.key === ' ') {
+                  navigate(`/books/${book._id}`);
+                }
+              }}
               style={{
                 backgroundImage: `url(${API_URL}${book.imageUrl})`,
                 backgroundSize: 'cover',
                 backgroundPosition: 'center',
+                cursor: 'pointer',
               }}
             >
               <span className="book-title">{book.title}</span>

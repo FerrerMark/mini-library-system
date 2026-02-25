@@ -13,6 +13,10 @@ const bookSchema= new mongoose.Schema({
         type: String,
         required: true
     },
+    content: {
+        type: String,
+        default: ""
+    },
     imageUrl: {
     type: String, 
     required: false

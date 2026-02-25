@@ -7,6 +7,7 @@ import Mybooks from './pages/MyBooks';
 import Contacts from './pages/Contacts';
 import About from './pages/About';
 import AuthorSearch from './pages/AuthorSearch';
+import BookInfo from './pages/BookInfo';
 import { useEffect } from 'react';
 import { jwtDecode } from 'jwt-decode';
 
@@ -63,6 +64,7 @@ function App() {
         <Route path="/contact" element={<Contacts />} />
         <Route path="/about" element={<About />} />
         <Route path="/authors" element={<AuthorSearch />} />
+        <Route path="/books/:id" element={<BookInfo />} />
       </Routes>
     </BrowserRouter>
   );
