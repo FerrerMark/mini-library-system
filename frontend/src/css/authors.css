@@ -34,3 +34,48 @@
 .author-list li {
     margin-bottom: 8px;
 }
+
+.author-link {
+    color: #7a3d00;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.author-link:hover {
+    text-decoration: underline;
+}
+
+.author-book-count {
+    color: #6c5b45;
+}
+
+.author-profile h3 {
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.author-meta {
+    margin: 6px 0;
+    color: #3d3020;
+}
+
+.author-book-list {
+    margin: 0 0 20px;
+    padding-left: 20px;
+}
+
+.author-book-list li {
+    margin-bottom: 8px;
+}
+
+.author-back-link {
+    display: inline-block;
+    margin-top: 10px;
+    color: #7a3d00;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.author-back-link:hover {
+    text-decoration: underline;
+}

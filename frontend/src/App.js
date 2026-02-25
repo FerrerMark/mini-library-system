@@ -11,8 +11,6 @@ import BookInfo from './pages/BookInfo';
 import { useEffect } from 'react';
 import { jwtDecode } from 'jwt-decode';
 
-
-
 const PrivateRoute = ({ children }) => {
   const token = localStorage.getItem('token');
   return token ? children : <Navigate to="/" />;
@@ -25,17 +23,17 @@ const PublicRoute = ({ children }) => {
 
 function App() {
   useEffect(() => {
-    const token = localStorage.getItem("token");
+    const token = localStorage.getItem('token');
     if (token) {
       try {
         const { exp } = jwtDecode(token);
         if (Date.now() >= exp * 1000) {
-          localStorage.removeItem("token");
-          window.location.href = "/";
+          localStorage.removeItem('token');
+          window.location.href = '/';
         }
       } catch {
-        localStorage.removeItem("token");
-        window.location.href = "/";
+        localStorage.removeItem('token');
+        window.location.href = '/';
       }
     }
   }, []);
