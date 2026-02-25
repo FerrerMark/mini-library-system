@@ -4,9 +4,32 @@ import Header from '../components/Header';
 import { bookApi } from '../api';
 import '../css/authors.css';
 
+const getAuthorDetails = (author) => {
+  if (!author) return null;
+
+  if (typeof author === 'string') {
+    return {
+      id: author,
+      name: '',
+      email: '',
+    };
+  }
+
+  const name = typeof author.name === 'string' ? author.name.trim() : '';
+  const email = typeof author.email === 'string' ? author.email.trim() : '';
+  const directId = author._id ? String(author._id) : '';
+  const fallbackId = name ? `name:${name.toLowerCase()}` : '';
+
+  return {
+    id: directId || fallbackId,
+    name,
+    email,
+  };
+};
+
 const AuthorProfile = () => {
-  const { authorId } = useParams();
-  const decodedAuthorId = decodeURIComponent(authorId || '');
+  const { authorId = '' } = useParams();
+  const profileId = String(authorId).trim();
 
   const [books, setBooks] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -29,17 +52,12 @@ const AuthorProfile = () => {
 
   const authoredBooks = useMemo(() => {
     return books.filter((book) => {
-      const author = book.author;
-      if (!author?.name) return false;
-
-      if (author._id === decodedAuthorId) return true;
-
-      const fallbackId = `name:${author.name.toLowerCase()}`;
-      return fallbackId === decodedAuthorId;
+      const details = getAuthorDetails(book.author);
+      return Boolean(details?.id) && details.id === profileId;
     });
-  }, [books, decodedAuthorId]);
+  }, [books, profileId]);
 
-  const author = authoredBooks[0]?.author;
+  const authorDetails = getAuthorDetails(authoredBooks[0]?.author);
 
   return (
     <div className="authors-page">
@@ -57,8 +75,8 @@ const AuthorProfile = () => {
           </>
         ) : (
           <>
-            <h2>{author?.name || 'Author Profile'}</h2>
-            {author?.email ? <p className="author-meta">Email: {author.email}</p> : null}
+            <h2>{authorDetails?.name || 'Author Profile'}</h2>
+            {authorDetails?.email ? <p className="author-meta">Email: {authorDetails.email}</p> : null}
             <p className="author-meta">Books in library: {authoredBooks.length}</p>
 
             <h3>Books</h3>
