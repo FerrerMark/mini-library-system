@@ -7,10 +7,9 @@ import Mybooks from './pages/MyBooks';
 import Contacts from './pages/Contacts';
 import About from './pages/About';
 import AuthorSearch from './pages/AuthorSearch';
+import AuthorProfile from './pages/AuthorProfile';
 import { useEffect } from 'react';
 import { jwtDecode } from 'jwt-decode';
-
-
 
 const PrivateRoute = ({ children }) => {
   const token = localStorage.getItem('token');
@@ -24,17 +23,17 @@ const PublicRoute = ({ children }) => {
 
 function App() {
   useEffect(() => {
-    const token = localStorage.getItem("token");
+    const token = localStorage.getItem('token');
     if (token) {
       try {
         const { exp } = jwtDecode(token);
         if (Date.now() >= exp * 1000) {
-          localStorage.removeItem("token");
-          window.location.href = "/";
+          localStorage.removeItem('token');
+          window.location.href = '/';
         }
       } catch {
-        localStorage.removeItem("token");
-        window.location.href = "/";
+        localStorage.removeItem('token');
+        window.location.href = '/';
       }
     }
   }, []);
@@ -63,6 +62,7 @@ function App() {
         <Route path="/contact" element={<Contacts />} />
         <Route path="/about" element={<About />} />
         <Route path="/authors" element={<AuthorSearch />} />
+        <Route path="/authors/:authorId" element={<AuthorProfile />} />
       </Routes>
     </BrowserRouter>
   );
