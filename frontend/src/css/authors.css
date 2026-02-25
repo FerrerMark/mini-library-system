@@ -1,0 +1,10 @@
+.authors {
+    border: 1px solid;
+    width: 100%;
+    height: 71vh;
+    margin-top: 31px;
+}
+
+.authors h2 {
+    padding: 0 7px;
+}
