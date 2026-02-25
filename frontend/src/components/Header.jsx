@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import '../css/header.css';
 
 const Header = () => {
@@ -6,20 +7,20 @@ const Header = () => {
 
     return (
         <div className="header">
-          <a href="/">
+          <Link to="/">
             <div
               className="logo"
               style={{ backgroundImage: `url(${process.env.PUBLIC_URL}/mylogo.svg)` }}
             ></div>
-          </a>
+          </Link>
             <h1 className="menu-toggle" onClick={() => setShowMenu(!showMenu)}>M</h1>
             <ul className={showMenu ? 'show' : ''}>
-                <li><a href="/">Home</a></li>
-                <li><a href="/about">About</a></li>
-                <li><a href="/contact">Contact</a></li>
-                <li><a className="search-icon-link" href="/authors" aria-label="Search authors">
-                <span class="iconamoon--search-bold"></span>
-                </a></li>
+                <li><Link to="/">Home</Link></li>
+                <li><Link to="/about">About</Link></li>
+                <li><Link to="/contact">Contact</Link></li>
+                <li><Link className="search-icon-link" to="/authors" aria-label="Search authors">
+                <span className="iconamoon--search-bold"></span>
+                </Link></li>
             </ul>
         </div>
     );
