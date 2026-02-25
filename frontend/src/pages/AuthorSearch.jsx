@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from 'react';
+import { Link } from 'react-router-dom';
 import Header from '../components/Header';
 import { bookApi } from '../api';
 import '../css/authors.css';
@@ -13,11 +14,29 @@ const AuthorSearch = () => {
       try {
         const response = await bookApi.getAll();
         const bookList = Array.isArray(response.data) ? response.data : [];
-        const names = bookList
-          .map((book) => book.author?.name)
-          .filter(Boolean);
+        const uniqueAuthors = new Map();
 
-        setAuthors([...new Set(names)]);
+        bookList.forEach((book) => {
+          const author = book.author;
+          const authorName = author?.name?.trim();
+          if (!authorName) return;
+
+          const authorId = author?._id || `name:${authorName.toLowerCase()}`;
+          const existing = uniqueAuthors.get(authorId);
+
+          if (existing) {
+            existing.bookCount += 1;
+            return;
+          }
+
+          uniqueAuthors.set(authorId, {
+            id: authorId,
+            name: authorName,
+            bookCount: 1,
+          });
+        });
+
+        setAuthors(Array.from(uniqueAuthors.values()));
       } catch (error) {
         console.error('Failed to load authors:', error);
         setAuthors([]);
@@ -32,8 +51,8 @@ const AuthorSearch = () => {
   const filteredAuthors = useMemo(() => {
     if (!query.trim()) return authors;
 
-    return authors.filter((authorName) =>
-      authorName.toLowerCase().includes(query.toLowerCase())
+    return authors.filter((author) =>
+      author.name.toLowerCase().includes(query.toLowerCase())
     );
   }, [authors, query]);
 
@@ -56,8 +75,13 @@ const AuthorSearch = () => {
         ) : (
           <ul className="author-list">
             {filteredAuthors.length > 0 ? (
-              filteredAuthors.map((authorName) => (
-                <li key={authorName}>{authorName}</li>
+              filteredAuthors.map((author) => (
+                <li key={author.id}>
+                  <Link className="author-link" to={`/authors/${encodeURIComponent(author.id)}`}>
+                    {author.name}
+                  </Link>
+                  <span className="author-book-count"> ({author.bookCount})</span>
+                </li>
               ))
             ) : (
               <li>No authors found.</li>
