@@ -1,6 +1,5 @@
 import BookList from '../components/BookList';
 import Header from '../components/Header';
-import Authors from '../components/Authors';
 import AddBtn from '../components/moreBtn';
 import '../css/home.css';
 import '../css/components.css';

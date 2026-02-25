@@ -65,6 +65,16 @@ font-size: 18px;
     background-position: center;
 }
 
+
+.search-icon-link {
+    font-size: 18px !important;
+    line-height: 1;
+    display: inline-block;
+}
+
+.search-icon-link:hover {
+    transform: scale(1.05);
+}
 @media (max-width: 390px) {
     .header ul {
         display: none;
