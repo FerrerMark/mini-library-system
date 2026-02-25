@@ -1,6 +1,11 @@
 const DeleteBtn = ({ onClick, id }) => {
+  const handleClick = (event) => {
+    event.stopPropagation();
+    onClick(id);
+  };
+
   return (
-    <button onClick={() => onClick(id)} className="delete-btn">
+    <button onClick={handleClick} className="delete-btn">
       Delete
     </button>
   );

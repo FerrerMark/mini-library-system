@@ -8,6 +8,7 @@ import EditModal from './EditModal';
 import '../css/components.css';
 import { jwtDecode } from 'jwt-decode';
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const MyBooks = () => {
   const [showModal, setShowModal] = useState(false);
@@ -18,6 +19,7 @@ const MyBooks = () => {
   const [loading, setLoading] = useState(true);
   const [confirmId, setConfirmId] = useState(null);
   const [editBook, setEditBook] = useState(null);
+  const navigate = useNavigate();
 
   const URL = process.env.REACT_APP_API_URL;
 
@@ -118,11 +120,20 @@ const MyBooks = () => {
             <div
               className="book-item"
               key={book._id}
+              onClick={() => navigate(`/books/${book._id}`)}
+              role="button"
+              tabIndex={0}
+              onKeyDown={(event) => {
+                if (event.key === 'Enter' || event.key === ' ') {
+                  navigate(`/books/${book._id}`);
+                }
+              }}
               style={{
                 backgroundImage: `url(${URL}${book.imageUrl})`,
                 backgroundSize: 'cover',
                 backgroundPosition: 'center',
                 padding: '20px',
+                cursor: 'pointer',
               }}
             >
               <span>{book.title}</span>

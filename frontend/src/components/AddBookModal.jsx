@@ -4,6 +4,7 @@ import "../css/addBookModal.css";
 const AddBookModal = ({ onClose }) => {
   const [title, setTitle] = useState("");
   const [genre, setGenre] = useState("");
+  const [content, setContent] = useState("");
   const [image, setImage] = useState(null);
   const URL = process.env.REACT_APP_API_URL;
 
@@ -15,6 +16,7 @@ const AddBookModal = ({ onClose }) => {
     const formData = new FormData();
     formData.append("title", title);
     formData.append("genre", genre);
+    formData.append("content", content);
     if (image) formData.append("image", image);
 
     try {
@@ -73,6 +75,16 @@ const AddBookModal = ({ onClose }) => {
               type="file"
               accept="image/*"
               onChange={(e) => setImage(e.target.files[0])}
+            />
+          </div>
+
+          <div>
+            <label>Content:</label>
+            <textarea
+              value={content}
+              onChange={(e) => setContent(e.target.value)}
+              placeholder="Write a short content or summary of the book..."
+              rows={4}
             />
           </div>
 

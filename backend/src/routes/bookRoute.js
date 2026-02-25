@@ -1,7 +1,7 @@
 import express from "express";
 import multer from "multer";
 import path from "path";
-import { getAllBook, addBook, deleteBook, deleteAllBook, getUserBooks, getMyBooks, editBook } from "../controller/bookController.js";
+import { getAllBook, getBookById, addBook, deleteBook, deleteAllBook, getUserBooks, getMyBooks, editBook } from "../controller/bookController.js";
 import { verifyToken } from "../middleware/authMiddleware.js";
 
 const router = express.Router();
@@ -20,6 +20,7 @@ router.post("/api/books", verifyToken, upload.single("image"), addBook);
 router.get("/getuserbooks/:id", getUserBooks);
 router.get("/getmybooks", getMyBooks);
 router.get("/", getAllBook);
+router.get("/:id", getBookById);
 router.put("/edit/:id", editBook);
 
 router.post("/",  upload.single("image"), addBook);

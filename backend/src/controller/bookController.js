@@ -16,6 +16,19 @@ export const getAllBook = async (req, res) => {
   }
 };
 
+export const getBookById = async (req, res) => {
+  try {
+    const book = await Book.findById(req.params.id).populate("author", "name");
+    if (!book) {
+      return res.status(404).json({ message: "Book not found" });
+    }
+    res.json(book);
+  } catch (err) {
+    console.error("Error fetching book by id:", err);
+    res.status(500).json({ message: "Server error", error: err.message });
+  }
+};
+
 export const editBook = async (req, res) => {
   try {
     const tokenHeader = req.headers.authorization;
@@ -24,7 +37,7 @@ export const editBook = async (req, res) => {
     const token = jwt.verify(tokenHeader.split(" ")[1], process.env.JWT_SECRET);
     const userId = token._id || token.id || token.userId;
 
-    const { title, genre } = req.body;
+    const { title, genre, content } = req.body;
     if (!title || !genre) return res.status(400).json({ message: "Missing title or genre" });
 
     const book = await Book.findById(req.params.id);
@@ -36,9 +49,10 @@ export const editBook = async (req, res) => {
 
     book.title = title;
     book.genre = genre;
+    book.content = content ?? "";
     await book.save();
 
-    res.status(200).json({ message: "Book updated successfully", book });
+    res.status(200).json(book);
   } catch (err) {
     console.error("Error editing book:", err);
     res.status(500).json({ message: "Server error", error: err.message });
@@ -54,7 +68,7 @@ export const addBook = async (req, res) => {
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
     const userId = decoded._id || decoded.id || decoded.userId;
 
-    const { title, genre } = req.body;
+    const { title, genre, content } = req.body;
     if (!title || !genre) return res.status(400).json({ message: "Missing title or genre" });
 
     const imageUrl = req.file ? `/uploads/${req.file.filename}` : null;
@@ -62,6 +76,7 @@ export const addBook = async (req, res) => {
     const book = await Book.create({
       title,
       genre,
+      content: content ?? "",
       author: userId,
       imageUrl,
     });
