@@ -137,8 +137,10 @@ const MyBooks = () => {
               }}
             >
               <span>{book.title}</span>
-              <DeleteBtn onClick={() => setConfirmId(book._id)} id={book._id} />
-              <EditBtn onClick={() => handleEdit(book)} />
+              <div className="book-actions">
+                <EditBtn onClick={() => handleEdit(book)} />
+                <DeleteBtn onClick={() => setConfirmId(book._id)} id={book._id} />
+              </div>
             </div>
           ))
         )}

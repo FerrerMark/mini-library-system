@@ -1,81 +1,81 @@
 .authors-page {
-    min-height: 100vh;
-    padding: 20px;
+  min-height: 100vh;
 }
 
 .authors {
-    border: 1px solid #00000026;
-    width: min(760px, 100%);
-    min-height: 71vh;
-    margin: 31px auto 0;
-    border-radius: 16px;
-    padding: 20px;
-    box-sizing: border-box;
-    background: #fff6e8;
+  border: 1px solid #00000026;
+  min-height: 71vh;
+  margin: 31px auto 0;
+  border-radius: 16px;
+  padding: 20px;
+  box-sizing: border-box;
+  background: #fff6e8;
+  overflow: auto;
+  max-height: 81vh;
 }
 
 .authors h2 {
-    margin-top: 0;
+  margin-top: 0;
 }
 
 .author-search-input input {
-    width: 100%;
-    padding: 10px 12px;
-    border: 1px solid #d1c3a6;
-    border-radius: 8px;
-    box-sizing: border-box;
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #d1c3a6;
+  border-radius: 8px;
+  box-sizing: border-box;
 }
 
 .author-list {
-    margin-top: 16px;
-    padding-left: 20px;
+  margin-top: 16px;
+  padding-left: 20px;
 }
 
 .author-list li {
-    margin-bottom: 8px;
+  margin-bottom: 8px;
 }
 
 .author-link {
-    color: #7a3d00;
-    text-decoration: none;
-    font-weight: 600;
+  color: #7a3d00;
+  text-decoration: none;
+  font-weight: 600;
 }
 
 .author-link:hover {
-    text-decoration: underline;
+  text-decoration: underline;
 }
 
 .author-book-count {
-    color: #6c5b45;
+  color: #6c5b45;
 }
 
 .author-profile h3 {
-    margin-top: 20px;
-    margin-bottom: 10px;
+  margin-top: 20px;
+  margin-bottom: 10px;
 }
 
 .author-meta {
-    margin: 6px 0;
-    color: #3d3020;
+  margin: 6px 0;
+  color: #3d3020;
 }
 
 .author-book-list {
-    margin: 0 0 20px;
-    padding-left: 20px;
+  margin: 0 0 20px;
+  padding-left: 20px;
 }
 
 .author-book-list li {
-    margin-bottom: 8px;
+  margin-bottom: 8px;
 }
 
 .author-back-link {
-    display: inline-block;
-    margin-top: 10px;
-    color: #7a3d00;
-    text-decoration: none;
-    font-weight: 600;
+  display: inline-block;
+  margin-top: 10px;
+  color: #7a3d00;
+  text-decoration: none;
+  font-weight: 600;
 }
 
 .author-back-link:hover {
-    text-decoration: underline;
+  text-decoration: underline;
 }
