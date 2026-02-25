@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
+import AddBtn from '../components/moreBtn';
 import Header from '../components/Header';
 import { bookApi } from '../api';
 import '../css/authors.css';
@@ -95,6 +96,7 @@ const AuthorProfile = () => {
           </>
         )}
       </div>
+      <AddBtn />
     </div>
   );
 };

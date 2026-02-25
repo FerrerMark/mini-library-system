@@ -45,8 +45,8 @@ const AddBookModal = ({ onClose }) => {
   };
 
   return (
-    <div className="modal-overlay">
-      <div className="modal-content">
+    <div className="modal-overlay add-book-modal-overlay">
+      <div className="modal-content add-book-modal-content">
         <h3>Add a New Book</h3>
         <form onSubmit={handleSubmit}>
           <div>

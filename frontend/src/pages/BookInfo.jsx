@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import Header from '../components/Header';
+import AddBtn from '../components/moreBtn';
 import { bookApi } from '../api';
 import '../css/bookInfo.css';
 
@@ -47,6 +48,7 @@ const BookInfo = () => {
           <p>Book not found.</p>
         ) : (
           <>
+          <div className="book-info-container">
             <div className="book-info-card">
               {book.imageUrl ? (
                 <img src={`${API_URL}${book.imageUrl}`} alt={book.title} className="book-info-image" />
@@ -64,10 +66,12 @@ const BookInfo = () => {
               <h3>Book Content</h3>
               <p>{book.content?.trim() ? book.content : 'No content added yet.'}</p>
             </div>
+          </div>  
           </>
           
         )}
       </div>
+      <AddBtn />
     </div>
   );
 };

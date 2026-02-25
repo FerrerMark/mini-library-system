@@ -17,7 +17,9 @@ const Header = () => {
                 <li><a href="/">Home</a></li>
                 <li><a href="/about">About</a></li>
                 <li><a href="/contact">Contact</a></li>
-                <li><a className="search-icon-link" href="/authors" aria-label="Search authors">🔍</a></li>
+                <li><a className="search-icon-link" href="/authors" aria-label="Search authors">
+                <span class="iconamoon--search-bold"></span>
+                </a></li>
             </ul>
         </div>
     );

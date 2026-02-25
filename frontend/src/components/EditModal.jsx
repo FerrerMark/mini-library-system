@@ -33,16 +33,37 @@ const EditModal = ({ book, onClose, onUpdate }) => {
   return (
     <div className="EditModal">
       <form onSubmit={handleSubmit}>
-        <input value={title} onChange={e => setTitle(e.target.value)} />
-        <input value={genre} onChange={e => setGenre(e.target.value)} />
+        <h3>Edit Book</h3>
+
+        <label htmlFor="edit-book-title">Title</label>
+        <input
+          id="edit-book-title"
+          value={title}
+          onChange={e => setTitle(e.target.value)}
+          placeholder="Enter book title"
+        />
+
+        <label htmlFor="edit-book-genre">Genre</label>
+        <input
+          id="edit-book-genre"
+          value={genre}
+          onChange={e => setGenre(e.target.value)}
+          placeholder="Enter genre"
+        />
+
+        <label htmlFor="edit-book-content">Content</label>
         <textarea
+          id="edit-book-content"
           value={content}
           onChange={e => setContent(e.target.value)}
           placeholder="Update book content..."
-          rows={4}
+          rows={6}
         />
-        <button type="submit">Save</button>
-        <button type="button" onClick={onClose}>Cancel</button>
+
+        <div className="edit-modal-actions">
+          <button type="submit">Save</button>
+          <button type="button" onClick={onClose}>Cancel</button>
+        </div>
       </form>
     </div>
   );
