@@ -1,9 +1,24 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import '../css/header.css';
+import axios from 'axios';
+
+const wake = async () => {
+  try {
+    await axios.get('https://mini-library-system-back.onrender.com/api/books');
+  } catch (err) {
+    console.error('wake request failed', err);
+  }
+}
 
 const Header = () => {
     const [showMenu, setShowMenu] = useState(false);
+
+    useEffect(() => {
+        wake();
+        const interval = setInterval(wake, 3 * 60 * 1000);
+        return () => clearInterval(interval);
+    }, []);
 
     return (
         <div className="header">
