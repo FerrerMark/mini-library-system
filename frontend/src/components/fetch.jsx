@@ -79,12 +79,12 @@ const MyBooks = () => {
   const confirmDelete = async () => {
     if (!confirmId) return;
     const token = localStorage.getItem("token");
-    const decoded = jwtDecode(token);
-    const userId = decoded._id || decoded.id || decoded.userId;
-
     try {
-      const res = await fetch(`${URL}/api/books/${confirmId}?userId=${userId}`, {
+      const res = await fetch(`${URL}/api/books/${confirmId}`, {
         method: 'DELETE',
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
       });
 
       if (!res.ok) throw new Error('Failed to delete');
