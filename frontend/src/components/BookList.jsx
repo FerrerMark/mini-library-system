@@ -81,29 +81,39 @@ function BookList() {
         <Loading message="Hang tight — the domain is starting up. Estimated wait: 1–45s." />
       ) : (
         <div className="BookList">
-          {filteredBooks.map((book) => (
-            <div
-              key={book._id}
-              className="book-item"
-              onClick={() => navigate(`/books/${book._id}`)}
-              role="button"
-              tabIndex={0}
-              onKeyDown={(event) => {
-                if (event.key === 'Enter' || event.key === ' ') {
-                  navigate(`/books/${book._id}`);
+          {filteredBooks.map((book) => {
+            const hasCoverImage = Boolean(book.imageUrl && book.imageUrl !== 'undefined');
+            const coverStyle = hasCoverImage
+              ? {
+                  backgroundImage: `url(${API_URL}${book.imageUrl})`,
+                  backgroundSize: 'cover',
+                  backgroundPosition: 'center',
                 }
-              }}
-              style={{
-                backgroundImage: `url(${API_URL}${book.imageUrl})`,
-                backgroundSize: 'cover',
-                backgroundPosition: 'center',
-                cursor: 'pointer',
-              }}
-            >
-              <span className="book-title">{book.title}</span>
-              <span className="book-author">{book.author?.name || 'Unknown Author'}</span>
-            </div>
-          ))}
+              : {};
+
+            return (
+              <div
+                key={book._id}
+                className="book-item"
+                onClick={() => navigate(`/books/${book._id}`)}
+                role="button"
+                tabIndex={0}
+                onKeyDown={(event) => {
+                  if (event.key === 'Enter' || event.key === ' ') {
+                    navigate(`/books/${book._id}`);
+                  }
+                }}
+                style={{
+                  ...coverStyle,
+                  cursor: 'pointer',
+                }}
+              >
+                {!hasCoverImage && <span className="no-cover-label">No cover</span>}
+                <span className="book-title">{book.title}</span>
+                <span className="book-author">{book.author?.name || 'Unknown Author'}</span>
+              </div>
+            );
+          })}
         </div>
       )}
     </div>
